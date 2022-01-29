@@ -8,15 +8,15 @@ class Solution {
             char ch = s.charAt(i);
             if (Character.isDigit(ch)) curr = curr * 10 + Character.getNumericValue(ch);
             if (ch == '+' || ch == '-' || ch == ')' || i == s.length() - 1) {
-                if (op == '-') curr = -curr;
-                total += curr;
+                if (op == '+') total += curr;
+                else total -= curr;
                 op = ch;
                 curr = 0;
             }
             if (ch == '(') {
                 int[] result = evaluate(s, i + 1);
-                if (op == '-') result[0] = -result[0];
-                total += result[0];
+                if (op == '+') total += result[0];
+                else total -= result[0];
                 i = result[1];
             }
             if (ch == ')') break;
